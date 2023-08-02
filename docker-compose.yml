@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  nginx:
+    build: ./nginx
+    image: my_nginx
+    container_name: 'my_nginx'
+    ports:
+    - "80:80"
+
+  dotnetdockertemplate:
+    image: ${DOCKER_REGISTRY-}dotnetdockertemplate
+    build:
+      context: .
+      dockerfile: dotnetDockerTemplate/Dockerfile
+    ports:
+    - 5000:5000
